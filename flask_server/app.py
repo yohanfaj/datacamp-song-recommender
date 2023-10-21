@@ -69,6 +69,57 @@ def search_songs():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+# ROUTE TO RECOMMAND A SONG
+@app.route('/songs/recommend', methods=['GET'])
+def recommend_songs():
+    try:
+        # Get the search query parameter from the request URL
+        # search query must be the id of a song
+        id_song = request.args.get('song_id')
+
+        if not id_song:
+            return jsonify({'error': 'Query parameter "song_id" is required'}), 400
+
+        # The first query to get the cluster of the song
+        query = f"""
+        SELECT cluster FROM `primal-pod-401712.datacampSongs.Songs` where id = {id_song}
+        """
+        
+        # Execute the query
+        query_job = client.query(query)
+
+        # Fetch the results
+        cluster_song = query_job.result()
+        
+        cluster_song_list = [row for row in cluster_song]
+        if not cluster_song_list:
+            return jsonify({'error': 'No song found for the provided id'}), 404
+        cluster_value = cluster_song_list[0].cluster
+
+        # The second query to get the songs of the same cluster
+        # The second query to get the songs of the same cluster
+        query = f"""
+        SELECT * 
+        FROM `primal-pod-401712.datacampSongs.Songs` 
+        WHERE cluster = {cluster_value} AND id != {id_song}
+        ORDER BY RAND() 
+        LIMIT 5"""
+
+        # Execute the query
+        query_job = client.query(query)
+
+        result = query_job.result()
+
+        # Convert the results to a list of dictionaries
+        songs = [dict(row) for row in result]
+
+        # Return the list of matching songs as JSON
+        return jsonify(songs), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+    
 
 @app.after_request
 def add_cors_headers(response):
