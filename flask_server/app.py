@@ -1,8 +1,10 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 from google.cloud import bigquery
 
 # Init Flask & BigQuery
 app = Flask(__name__)
+CORS(app)
 client = bigquery.Client.from_service_account_json('primal-pod-401712-dcbbeb5f006a.json')
 
 
@@ -67,6 +69,13 @@ def search_songs():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type")
+    response.headers.add("Access-Control-Allow-Methods", "POST")
+    return response
 
 
 if __name__ == '__main__':
