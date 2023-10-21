@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "primal-pod-401712",
+  "private_key_id": "dcbbeb5f006af2990e0db1ba0aa1b7bbd9630669",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDE0UHlDRHfjn2x\nwU8yPYZ7CAyKhK8P7un5t/yTP5YEbRQx3bPP+VGCYF/y470fV+o0bJedpRitzxun\n+i3nhe0HNT3kc+sMSqco3eI1iwEoaQs6pA4BcTWLBY+bm7D+0ENzaQJeqzX/H/sz\nuufBIZ51+lqyjkmF5EP2piuFyQQfEC4PEDbz9HAWovxbK6fyvsxGuPaCrWOEhuW9\nDnQHk6R1lSqWWUC6btfpOIs37JdFIlO/AIpXETmqmOUtR9F+061oDhHBUj4kgspT\njJ3jeW2+WWfNlyK4UISPLoJXuT+shbRwkqdcIp2Ehor4DIm3gFdFmIK6B9+Gbrcu\na1iHjjnhAgMBAAECggEACcnLwykhPcMHu/K8jj0XwRVSD67a81STIljky4CaugxK\nuCgp1yqzw7jTTMXIFBT6kDI5CsgOhXu1XmdHfSo18uknni2oVOt+4L4YOp1300YA\nyaElvoCeLxR5uJLHp1noNjHUwlc1ekNhlN2zb5wia1pQxGyQei4zYG2R4IzHaFv+\noyPN1CIz+KJ2nuWzxWtAcRVs8wIsGgirqY69oDPxxQ0j98z1izoalUAXZEW0idUk\nleKpOzdzHGWr7zQ2m/pte02JHZaWhKgM9gSuyH/RGdkNcgBAK9XY+FzBk1hXecz+\nJHCyH1v3eP9kgGWCqmq2p4fiEH9S35RxtmKqCxaMIQKBgQDm0nNyP0xoSjqNe0oN\nxOZlddBNOhWfisk/KCFz3i0XTW24TO6RumJv0L+HysNhYWAjE8HFelvDMDaIXgN7\nOWW9MigOUxLtv1osVVE1pQHrSrxWPx346mcdOEYwH3NbeE2bKv3KmnX7UVCtwF+X\n5WW0NoYm9AyQmvG01fo2bndnJQKBgQDaST/ai7TZ3PkDDuCbc9NwKZ8JfdyxKUcS\n2W/C7aLtbPBwK7Tuw1XwPH9Z5o5COy0vpUheSzFGNkBn13nrH2KeO2vfDiIWYnGJ\nJb3Hc2kWxLX/Cs49HoxlpbwHBPbdR+xISROJBlCD29qwJmUf58dL6JhwKjL3dLtF\ndhoSuQ/5DQKBgQCu1EIbC7Ss3WRCG1r42OWFfdnbVJ5iLDXH/3ZvE55lowDy8lpU\nyK6ccKlRihO4o4+0oddH4yizy8XSPhs27z+PMPlD+EpDB4eeQrTzA9tTQ1Upoj7q\ndWjKqgAHnRq78oAdgk+ecKXiSDHqmOYO3/LLr+ymfn0x3horVVNifQM1fQKBgE1E\nLGQRm7yaaVJZy8t63lcPhIn5kUrsj4nuiY74Svm73Af4kJ0La7oT0AhkgeqTw9Tf\nrpQiDZkKzxVywmclvuS/p9lWyV4fDo07XMfi5En462sRyhr8WzoHxly9txxwvwR/\nSXjxUUK7add8X8NBadxGwt7BMTVCjp9xxJzoAO1pAoGAJuU+LZxaJBaB79cq34ZE\nfbz5nuTlTeOLV0wLO+tMjjB2lfdfpFP87C99ZpQ+snAmfTlK5GiHDVD0+Mxvuyde\nx+vbbZ1ijlPefrwLDlFTp1ceY+2RSejU+snC2SxXNSQta6BfSmN79y6Lm1t6RbeR\npNlQs+l6it/oZmaXUv3revM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "emerick@primal-pod-401712.iam.gserviceaccount.com",
+  "client_id": "102624134368013813308",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/emerick%40primal-pod-401712.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
