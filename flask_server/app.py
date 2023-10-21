@@ -50,9 +50,9 @@ def search_songs():
         # Define your BigQuery SQL query to search for songs based on the query parameter
         query = f"""
         SELECT * FROM `primal-pod-401712.datacampSongs.Songs`
-        WHERE Name LIKE '%{search_query}%' 
-        OR Artist LIKE '%{search_query}%'
-        OR Album LIKE '%{search_query}%'
+        WHERE LOWER(Name) LIKE LOWER('%{search_query}%') 
+        OR LOWER(Artist) LIKE LOWER('%{search_query}%')
+        OR LOWER(Album) LIKE LOWER('%{search_query}%')
         """
 
         # Execute the query
