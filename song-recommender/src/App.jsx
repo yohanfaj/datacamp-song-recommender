@@ -41,8 +41,21 @@ function App() {
     });
   }
 
-  const handleButtonClick = (songId) => {
+  const analyzeSong = (songId) => {
         window.open(`/songs/${songId}`, '_blank');
+ }
+
+ const listenSong = (songId) => {
+        fetch(`http://127.0.0.1:5000/songs/${songId}`)
+            .then(response => response.json())
+            .then(data => {
+                const songTitle = `${data[0].Name} ${data[0].Artist}`;
+                const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(songTitle)}`;
+                window.open(youtubeSearchUrl, '_blank');
+            }
+        ).catch(error => {
+            console.log(error);
+        });
  }
 
 
@@ -87,6 +100,7 @@ function App() {
                 <th className="py-3 px-6 text-left border-r border-purple-300">Artist</th>
                 <th className="py-3 px-6 text-left border-r border-purple-300">Album</th>
                 <th className="py-3 px-6 text-left"></th>
+                <th className="py-3 px-6 text-left"></th>
               </tr>
             </thead>
             <tbody>
@@ -100,9 +114,19 @@ function App() {
                         className="flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500
                         hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
                         type="button"
-                        onClick={() => handleButtonClick(song.id)}
+                        onClick={() => analyzeSong(song.id)}
                     >
                         Analyze
+                    </button>
+                  </td>
+                    <td className="py-2 px-6">
+                    <button
+                        className="flex-shrink-0 bg-orange-500 hover:bg-orange-700 border-orange-500
+                        hover:border-orange-700 text-sm border-4 text-white py-1 px-2 rounded"
+                        type="button"
+                        onClick={() => listenSong(song.id)}
+                    >
+                        Listen
                     </button>
                   </td>
                 </tr>

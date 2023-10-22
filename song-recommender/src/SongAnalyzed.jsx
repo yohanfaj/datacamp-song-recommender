@@ -43,7 +43,18 @@ const SongAnalyzed = () => {
         getRecommendedSongs();
     }, []);
 
-
+     const listenSong = (songId) => {
+        fetch(`http://127.0.0.1:5000/songs/${songId}`)
+            .then(response => response.json())
+            .then(data => {
+                const songTitle = `${data[0].Name} ${data[0].Artist}`;
+                const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(songTitle)}`;
+                window.open(youtubeSearchUrl, '_blank');
+            }
+        ).catch(error => {
+            console.log(error);
+        });
+ }
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen" style={containerStyle}>
@@ -55,9 +66,12 @@ const SongAnalyzed = () => {
                         <h1 className="mb-4 text-2xl font-bold text-gray-900">Song Analyzed: </h1>
                         <br/>
 
-                        <h2 className="mb-4 text-xl font-bold text-gray-900">{analyzedSong.Name} -
-                            {analyzedSong.Artist}</h2>
+                        <h2 className="mb-4 text-xl font-bold text-gray-900">{analyzedSong.Name} - {analyzedSong.Artist}</h2>
                         <p className="mb-4 text-gray-900">From the album {analyzedSong.Album}</p>
+                        <button onClick={() => listenSong(analyzedSong.id)}
+                                  className="bg-purple-500 text-white font-semibold py-2 px-4 rounded-lg">
+                              Listen on YouTube
+                        </button>
                     </div>
                 </div>
             ) : (
@@ -70,10 +84,17 @@ const SongAnalyzed = () => {
                     <h1 className="text-2xl font-bold text-gray-900 mb-4">Recommended Songs:</h1>
 
                     {recommendedSongs.map((song, index) => (
-                      <div key={index} className="bg-orange-200 shadow-md rounded-lg p-6 mb-3">
-                        <h3 className="text-xl font-bold text-gray-900 mb-4">{song.Name} - {song.Artist}</h3>
-                        <p className="text-gray-700">From the album {song.Album}</p>
-                      </div>
+                        <div key={index} className="bg-orange-200 shadow-md rounded-lg p-6 mb-3 flex items-center justify-between">
+                          <div>
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">{song.Name} - {song.Artist}</h3>
+                            <p className="text-gray-700">From the album {song.Album}</p>
+                          </div>
+                          <button onClick={() => listenSong(song.id)}
+                                  className="bg-purple-500 text-white font-semibold py-2 px-4 rounded-lg">
+                              Listen on YouTube
+                          </button>
+                        </div>
+
                     ))}
                   </div>
                 </div>
