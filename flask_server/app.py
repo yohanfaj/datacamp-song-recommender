@@ -53,6 +53,7 @@ def search_songs():
         WHERE LOWER(Name) LIKE LOWER('%{search_query}%') 
         OR LOWER(Artist) LIKE LOWER('%{search_query}%')
         OR LOWER(Album) LIKE LOWER('%{search_query}%')
+        LIMIT 10
         """
 
         # Execute the query
