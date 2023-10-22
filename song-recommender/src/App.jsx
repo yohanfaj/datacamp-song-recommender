@@ -1,18 +1,18 @@
-import logo from './logo.png';
+import React, {useState} from "react";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+
+import logo from './logo.png';
 import background from './background.png';
-import {useState} from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 
 function App() {
 
-  const containerStyle = {
+    const containerStyle = {
     backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
-    minHeight: '100vh',
+    maxHeight: '100%',
   };
 
   const [query, setQuery] = useState('');
@@ -42,9 +42,7 @@ function App() {
   }
 
   const handleButtonClick = (songId) => {
-    // Ici, nous utilisons window.location pour rediriger l'utilisateur
-    // Vous pouvez également utiliser une bibliothèque de routage comme React Router
-    window.location.href = `/songs/?id_song=${songId}`;
+        window.open(`/songs/${songId}`, '_blank');
  }
 
 
@@ -80,29 +78,33 @@ function App() {
       </div>
 
       {/* Tableau des chansons */}
-
       {songs.length > 0 && (
-        <div className="mt-4">
-          <table className="min-w-full">
+          <div className="mt-4 mb-4">
+            <table className="min-w-full divide-y divide-purple-500">
             <thead>
-              <tr>
-                <th className="py-2 px-4 border">Name</th>
-                <th className="py-2 px-4 border">Artist</th>
-                <th className="py-2 px-4 border">Album</th>
-                <th className="py-2 px-4 border">Action</th>  {/* Nouvelle colonne pour le bouton */}
-                {/* Ajoutez d'autres en-têtes de colonne si nécessaire */}
+              <tr className="bg-purple-200">
+                <th className="py-3 px-6 text-left border-r border-purple-300">Name</th>
+                <th className="py-3 px-6 text-left border-r border-purple-300">Artist</th>
+                <th className="py-3 px-6 text-left border-r border-purple-300">Album</th>
+                <th className="py-3 px-6 text-left"></th>
               </tr>
             </thead>
             <tbody>
-              {songs.map(song => (
-                <tr key={song.id}>
-                  <td className="py-2 px-4 border">{song.Name}</td>
-                  <td className="py-2 px-4 border">{song.Artist}</td>
-                  <td className="py-2 px-4 border">{song.Album}</td>
-                  <td className="py-2 px-4 border">
-                    <button onClick={() => handleButtonClick(song.id)}>View</button>  {/* Bouton pour chaque chanson */}
+              {songs.map((song) => (
+                <tr key={song.id} className="hover:bg-purple-200">
+                  <td className="py-2 px-6 border-r border-purple-300">{song.Name}</td>
+                  <td className="py-2 px-6 border-r border-purple-300">{song.Artist}</td>
+                  <td className="py-2 px-6 border-r border-purple-300">{song.Album}</td>
+                  <td className="py-2 px-6">
+                    <button
+                        className="flex-shrink-0 bg-purple-500 hover:bg-purple-700 border-purple-500
+                        hover:border-purple-700 text-sm border-4 text-white py-1 px-2 rounded"
+                        type="button"
+                        onClick={() => handleButtonClick(song.id)}
+                    >
+                        Analyze
+                    </button>
                   </td>
-                  {/* Ajoutez d'autres colonnes si nécessaire */}
                 </tr>
               ))}
             </tbody>

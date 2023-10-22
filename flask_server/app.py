@@ -70,8 +70,35 @@ def search_songs():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
-# ROUTE TO RECOMMAND A SONG
+
+
+# ROUTE TO SEARCH FOR A SONG BASED ON ITS ID
+@app.route('/songs/<int:song_id>', methods=['GET'])
+def get_song(song_id):
+    try:
+        # Define your BigQuery SQL query to search for songs based on the song id
+        query = f"""
+        SELECT * FROM `primal-pod-401712.datacampSongs.Songs`
+        WHERE id = {song_id}
+        """
+
+        # Execute the query
+        query_job = client.query(query)
+
+        # Fetch the results
+        results = query_job.result()
+
+        # Convert the results to a list of dictionaries
+        songs = [dict(row) for row in results]
+
+        # Return the list of matching songs as JSON
+        return jsonify(songs), 200
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+# ROUTE TO RECOMMEND A SONG
 @app.route('/songs/recommend', methods=['GET'])
 def recommend_songs():
     try:
@@ -86,19 +113,18 @@ def recommend_songs():
         query = f"""
         SELECT cluster FROM `primal-pod-401712.datacampSongs.Songs` where id = {id_song}
         """
-        
+
         # Execute the query
         query_job = client.query(query)
 
         # Fetch the results
         cluster_song = query_job.result()
-        
+
         cluster_song_list = [row for row in cluster_song]
         if not cluster_song_list:
             return jsonify({'error': 'No song found for the provided id'}), 404
         cluster_value = cluster_song_list[0].cluster
 
-        # The second query to get the songs of the same cluster
         # The second query to get the songs of the same cluster
         query = f"""
         SELECT * 
