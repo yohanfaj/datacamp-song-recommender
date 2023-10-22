@@ -1,3 +1,6 @@
+@import './tailwind.css';
+
+/* The rest of your styles in index.css */
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
