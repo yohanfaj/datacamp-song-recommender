@@ -65,6 +65,10 @@ def search_songs():
         # Convert the results to a list of dictionaries
         songs = [dict(row) for row in results]
 
+        if not songs:
+            # No songs found for the query
+            return jsonify({'warning': 'No songs found for the provided query'}), 200
+
         # Return the list of matching songs as JSON
         return jsonify(songs), 200
 

@@ -17,6 +17,7 @@ function App() {
 
   const [query, setQuery] = useState('');
   const [songs, setSongs] = useState([]);
+
   const searchSong = (query) => {
     console.log(query)
     fetch(`http://127.0.0.1:5000/songs/search?query=${query}`, {
@@ -33,8 +34,13 @@ function App() {
       }
     })
         .then(data => {
-            console.log(data);
-            setSongs(data);
+            if (data.length === 0) {
+                window.alert(`No songs found for ${query}`);
+            }
+            else {
+                console.log(data);
+                setSongs(data);
+            }
         }
     ).catch(error => {
       console.log(error);
