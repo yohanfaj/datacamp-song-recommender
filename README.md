@@ -5,6 +5,7 @@ Instructions to run the project from an IDE:
 
 ### 1. Backend :
 * Go to the ``flask_server`` folder : ``cd flask_server``
+* Activate the virtual environment : ``venv\Scripts\activate``
 * Install the dependencies: ``pip install -r requirements.txt``
 * Run the server : ``python app.py``
 
