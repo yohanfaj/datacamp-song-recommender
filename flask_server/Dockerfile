@@ -17,8 +17,6 @@ EXPOSE 5000
 COPY song-recommender/ /song-recommender
 
 # Install Node.js and build the React app
-RUN apt-get update && apt-get install -y nodejs
-RUN cd /song-recommender && npm install
 RUN cd /song-recommender && npm run build
 
 # Start the Flask app with Gunicorn
