@@ -3,14 +3,14 @@ from flask_cors import CORS
 from google.cloud import bigquery
 
 # Init Flask & BigQuery
-app = Flask(__name__, static_folder='../song-recommender/build', static_url_path='/')
+app = Flask(__name__)
 CORS(app)
 client = bigquery.Client.from_service_account_json('./flask_server/primal-pod-401712-dcbbeb5f006a.json')
 
 
 @app.route('/')
 def hello_world():
-    return app.send_static_file('../song-recommender/build/index.html')
+    return "Hello World!"
 
 
 # ROUTE TO GET ALL SONGS
