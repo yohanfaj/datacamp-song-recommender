@@ -1,3 +1,6 @@
+build.service_account: emerick@primal-pod-401712.iam.gserviceaccount.com
+build.logs_bucket: gs://bucket1-datacamp
+
 steps:
   # FRONTEND BUILD
   - name: 'gcr.io/cloud-builders/npm'
