@@ -1,3 +1,4 @@
 flask
 flask_cors
 google-cloud-bigquery
+urllib3==1.25.11
