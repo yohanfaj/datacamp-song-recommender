@@ -1,2 +1,2 @@
-buildCommand: npm run build
-publishDir: build
+buildCommand: cd ./song-recommender && npm run build
+publishDir: ./song-recommender/build
