@@ -20,11 +20,3 @@ steps:
   # DEPLOY
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy']
-
-options:
-  logging: CLOUD_LOGGING_ONLY
-
-serviceAccount:
-    email: 'emerick@primal-pod-401712.iam.gserviceaccount.com'
-    scopes:
-      - 'https://www.googleapis.com/auth/cloud-platform'
