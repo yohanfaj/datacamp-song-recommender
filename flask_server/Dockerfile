@@ -2,10 +2,10 @@
 FROM python:3.7-slim
 
 # Set the working directory
-WORKDIR /flask_server
+WORKDIR ./flask_server
 
 # Copy the requirements file into the container
-COPY requirements.txt .
+COPY ./flask_server/requirements.txt .
 
 # Install the required Python packages
 RUN pip install -r requirements.txt
