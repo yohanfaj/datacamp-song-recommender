@@ -5,7 +5,7 @@ from google.cloud import bigquery
 # Init Flask & BigQuery
 app = Flask(__name__)
 CORS(app)
-client = bigquery.Client.from_service_account_json('flask_server/primal-pod-401712-dcbbeb5f006a.json')
+client = bigquery.Client.from_service_account_json('./primal-pod-401712-dcbbeb5f006a.json')
 
 
 @app.route('/')
