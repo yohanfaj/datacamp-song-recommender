@@ -1,5 +1,5 @@
 build.service_account: emerick@primal-pod-401712.iam.gserviceaccount.com
-build.logs_bucket: gs://bucket1-datacamp
+build.options.default_logs_bucket_behavior: REGIONAL_USER_OWNED_BUCKET
 
 steps:
   # FRONTEND BUILD
