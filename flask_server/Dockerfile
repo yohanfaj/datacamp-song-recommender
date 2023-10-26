@@ -18,5 +18,3 @@ EXPOSE 5000
 
 # Start the Flask app
 CMD ["python", "app.py"]
-
-RUN ["sh", "start.sh"]
