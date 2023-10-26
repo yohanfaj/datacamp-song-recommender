@@ -2,17 +2,10 @@ steps:
   # FRONTEND BUILD
   - name: 'gcr.io/cloud-builders/npm'
     args: ['install']
-    options:
-      logging: CLOUD_LOGGING_ONLY
-      logsBucket: bucket1-datacamp
-    serviceAccount: emerick@primal-pod-401712.iam.gserviceaccount.com
 
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build']
-    options:
-      logging: CLOUD_LOGGING_ONLY
-      logsBucket: bucket1-datacamp
-    serviceAccount: emerick@primal-pod-401712.iam.gserviceaccount.com
+
 
   # BACKEND BUILD
   - name: python
@@ -21,22 +14,11 @@ steps:
 
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'build', '-t', 'gcr.io/primal-pod-401712/flask_server', '.' ]
-    options:
-      logging: CLOUD_LOGGING_ONLY
-      logsBucket: bucket1-datacamp
-    serviceAccount: emerick@primal-pod-401712.iam.gserviceaccount.com
 
   - name: 'gcr.io/cloud-builders/docker'
     args: [ 'push', 'gcr.io/primal-pod-401712/flask_server' ]
-    options:
-      logging: CLOUD_LOGGING_ONLY
-      logsBucket: bucket1-datacamp
-    serviceAccount: emerick@primal-pod-401712.iam.gserviceaccount.com
+
 
   # DEPLOY
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy', 'cloudbuild.yaml']
-    options:
-      logging: CLOUD_LOGGING_ONLY
-      logsBucket: bucket1-datacamp
-    serviceAccount: emerick@primal-pod-401712.iam.gserviceaccount.com
