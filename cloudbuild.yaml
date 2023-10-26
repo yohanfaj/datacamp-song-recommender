@@ -1,3 +1,7 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+  logsBucket: bucket1-datacamp
+
 steps:
   # FRONTEND BUILD
   - name: 'gcr.io/cloud-builders/npm'
@@ -20,3 +24,8 @@ steps:
   # DEPLOY
   - name: 'gcr.io/cloud-builders/gcloud'
     args: ['app', 'deploy', 'cloudbuild.yaml']
+
+    options:
+      logging: CLOUD_LOGGING_ONLY
+      logsBucket: bucket1-datacamp
+      serviceAccount: emerick@primal-pod-401712.iam.gserviceaccount.com
