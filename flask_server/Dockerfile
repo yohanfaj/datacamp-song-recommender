@@ -10,14 +10,16 @@ COPY ./flask_server/requirements.txt .
 # Install the required Python packages
 RUN pip install -r requirements.txt
 
-# Copy the rest of the application code into the container
-COPY . .
-
-# Copy the render.yaml file from the song-recommender directory
-COPY song-recommender/render.yaml .
-
 # Expose the port that your Flask app listens on
 EXPOSE 5000
+
+# Copy the frontend code into the container
+COPY song-recommender/ /song-recommender
+
+# Install Node.js and build the React app
+RUN apt-get update && apt-get install -y nodejs
+RUN cd /song-recommender && npm install
+RUN cd /song-recommender && npm run build
 
 # Start the Flask app with Gunicorn
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "flask_server.app:app"]
