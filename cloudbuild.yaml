@@ -1,0 +1,22 @@
+steps:
+  # FRONTEND BUILD
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build']
+
+  # BACKEND BUILD
+  - name: python
+    entrypoint: python
+    args: [ 'install', '-r', 'requirements.txt', '--user' ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'build', '-t', 'gcr.io/${primal-pod-401712}/flask_server', '.' ]
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: [ 'push', 'gcr.io/${primal-pod-401712}/flask_server' ]
+
+  # DEPLOY
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', 'cloudbuild.yaml']
