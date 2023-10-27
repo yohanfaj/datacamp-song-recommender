@@ -44,4 +44,4 @@ COPY ./song-recommender ./
 EXPOSE 3000
 
 # Start the Node.js app
-CMD [ "npm", "build start" ]
+CMD [ "npm", "start" ]
