@@ -32,7 +32,7 @@ FROM node:14
 WORKDIR /app
 
 # Copy package.json and package-lock.json into the container
-COPY package*.json ./
+COPY ./song-recommender/package*.json ./
 
 # Install the required Node.js packages
 RUN npm install
