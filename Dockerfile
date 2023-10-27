@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Copy the render.yaml file from the song-recommender directory
-COPY ../song-recommender/render.yaml .
+COPY ./song-recommender/render.yaml .
 
 # Expose the port that your Flask app listens on
 EXPOSE 5000
