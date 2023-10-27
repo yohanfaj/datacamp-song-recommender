@@ -13,7 +13,7 @@ RUN pip install -r requirements.txt
 # Copy the rest of the application code into the container
 COPY . .
 
-# Copy the render.yaml file from the song-recommender directory
+# Copy the render.yaml file
 COPY ./render.yaml .
 
 # Expose the port that your Flask app listens on
@@ -37,8 +37,8 @@ COPY ./song-recommender/package*.json ./
 # Install the required Node.js packages
 RUN npm install
 
-# Copy the rest of the application code into the container
-COPY . .
+# Copy the rest of the application files
+COPY ./song-recommender ./
 
 # Expose the port that your Node.js app listens on
 EXPOSE 3000
