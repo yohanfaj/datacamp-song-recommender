@@ -10,7 +10,7 @@ client = bigquery.Client.from_service_account_json('./flask_server/primal-pod-40
 
 @app.route('/')
 def hello_world():
-    return "Hello World!"
+    return "Hello, this is the Flask server of the Song Recommender website!"
 
 
 # ROUTE TO GET ALL SONGS
