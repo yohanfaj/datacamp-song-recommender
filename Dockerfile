@@ -2,7 +2,7 @@
 FROM python:3.7-slim
 
 # Set the working directory
-WORKDIR ./flask_server
+WORKDIR ./
 
 # Copy the requirements file into the container
 COPY ./flask_server/requirements.txt .
@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Copy the render.yaml file from the song-recommender directory
-COPY ./song-recommender/render.yaml .
+COPY ./render.yaml .
 
 # Expose the port that your Flask app listens on
 EXPOSE 5000
