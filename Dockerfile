@@ -29,7 +29,7 @@ CMD ["gunicorn", "-b", "0.0.0.0:5000", "flask_server.app:app"]
 FROM node:14
 
 # Set the working directory
-WORKDIR /app
+WORKDIR ./app
 
 # Copy package.json and package-lock.json into the container
 COPY ./song-recommender/package*.json ./
