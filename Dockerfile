@@ -23,25 +23,25 @@ EXPOSE 5000
 CMD ["gunicorn", "-b", "0.0.0.0:5000", "flask_server.app:app"]
 
 
-######################################################################"
+########################################################################
 
-# Use the official Node.js image as the base image
-FROM node:14
-
-# Set the working directory
-WORKDIR ./app
-
-# Copy package.json and package-lock.json into the container
-COPY ./song-recommender/package*.json ./
-
-# Install the required Node.js packages
-RUN npm install
-
-# Copy the rest of the application files
-COPY ./song-recommender ./
-
-# Expose the port that your Node.js app listens on
-EXPOSE 3000
-
-# Start the Node.js app
-CMD [ "npm", "start" ]
+## Use the official Node.js image as the base image
+#FROM node:14
+#
+## Set the working directory
+#WORKDIR ./app
+#
+## Copy package.json and package-lock.json into the container
+#COPY ./song-recommender/package*.json ./
+#
+## Install the required Node.js packages
+#RUN npm install
+#
+## Copy the rest of the application files
+#COPY ./song-recommender ./
+#
+## Expose the port that your Node.js app listens on
+#EXPOSE 3000
+#
+## Start the Node.js app
+#CMD [ "npm", "start" ]
